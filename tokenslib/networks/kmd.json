@@ -1,0 +1,16 @@
+{
+  "// Komodo": "",
+
+  "ms_per_block": 150000,
+  "is_rbf_disabled": true,
+  "is_segwit_absent": true,
+  "prefix": {
+    "bech32": "ltc",
+    "bip32_private_key": "0488ade4",
+    "bip32_public_key": "0488b21e",
+    "message_prefix": "\\x19Komodo Signed Message:\n",
+    "p2pkh": "3C",
+    "p2sh": "55",
+    "wif": "BC"
+  }
+}
