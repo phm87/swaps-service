@@ -3,6 +3,7 @@ const bch = require('./bch');
 const bchtestnet = require('./bchtestnet');
 const bcoinregtest = require('./bcoinregtest');
 const bitcoin = require('./bitcoin');
+const kmd = require('./kmd');
 const ltc = require('./ltc');
 const ltcregtest = require('./ltcregtest');
 const ltctestnet = require('./ltctestnet');
@@ -17,6 +18,7 @@ module.exports = {
   bchtestnet,
   bcoinregtest,
   bitcoin,
+  kmd,
   ltc,
   ltcregtest,
   ltctestnet,
