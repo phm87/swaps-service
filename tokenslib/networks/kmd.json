@@ -5,7 +5,7 @@
   "is_rbf_disabled": true,
   "is_segwit_absent": true,
   "prefix": {
-    "bech32": "ltc",
+    "bech32": "",
     "bip32_private_key": "0488ade4",
     "bip32_public_key": "0488b21e",
     "message_prefix": "\\x19Komodo Signed Message:\n",
