@@ -33,6 +33,7 @@ App.changedCurrencySelection = function({}) {
   switch (network) {
   case 'bch':
   case 'bitcoin':
+  case 'kmd':
   case 'litecoin':
     fiatCode = 'USD';
     break;
@@ -275,6 +276,10 @@ App.checkSwap = ({button, id, quote}) => {
 
     case 'testnet':
       txUrl = `https://blockstream.info/testnet/tx/${res.transaction_id}`;
+      break;
+
+    case 'kmd':
+      txUrl = `https://kmd.explorer.dexstats.info/tx/${res.transaction_id}`;
       break;
 
     case 'ltc':
@@ -953,6 +958,11 @@ App.presentCompletedSwap = args => {
   case 'testnet':
     href = `https://blockstream.info/testnet/tx/${args.transaction_id}`;
     onChainCurrency = 'tBTC';
+    break;
+
+  case 'kmd':
+    href = `https://kmd.explorer.dexstats.info/tx/${args.transaction_id}`;
+    onChainCurrency = 'KMD';
     break;
 
   case 'ltc':
