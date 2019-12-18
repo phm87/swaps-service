@@ -975,7 +975,7 @@ App.presentCompletedSwap = args => {
 
   case 'hush':
     href = `https://hush.explorer.dexstats.info/tx/${args.transaction_id}`;
-    onChainCurrency = 'KMD';
+    onChainCurrency = 'HUSH';
     break;
 
   case 'kmd':
