@@ -33,6 +33,7 @@ App.changedCurrencySelection = function({}) {
   switch (network) {
   case 'bch':
   case 'bitcoin':
+  case 'hush':
   case 'kmd':
   case 'litecoin':
     fiatCode = 'USD';
@@ -276,6 +277,10 @@ App.checkSwap = ({button, id, quote}) => {
 
     case 'testnet':
       txUrl = `https://blockstream.info/testnet/tx/${res.transaction_id}`;
+      break;
+
+    case 'hush':
+      txUrl = `https://hush.explorer.dexstats.info/tx/${res.transaction_id}`;
       break;
 
     case 'kmd':
@@ -766,6 +771,14 @@ App.initActiveChains = ({}, cbk) => {
           optionName = 'Bitcoin';
           break;
 
+        case 'hush':
+          optionName = 'Hush';
+          break;
+
+        case 'kmd':
+          optionName = 'Komodo';
+          break;
+            
         case 'ltc':
           optionName = 'Litecoin';
           break;
@@ -958,6 +971,11 @@ App.presentCompletedSwap = args => {
   case 'testnet':
     href = `https://blockstream.info/testnet/tx/${args.transaction_id}`;
     onChainCurrency = 'tBTC';
+    break;
+
+  case 'hush':
+    href = `https://hush.explorer.dexstats.info/tx/${args.transaction_id}`;
+    onChainCurrency = 'KMD';
     break;
 
   case 'kmd':
@@ -1165,6 +1183,8 @@ App.submitCreateSwapQuote = function(event) {
 
     switch (network) {
     case 'bch':
+    case 'kmd':
+    case 'hush':
     case 'bchtestnet':
       scheme = 'bitcoincash';
       swapAddress = details.swap_p2sh_address;
@@ -1304,6 +1324,8 @@ App.submitRefundRecovery = function(event) {
     const address = details.swap_address;
 
     switch (details.network) {
+    case 'hush':
+    case 'kmd': // How to adapt this ? Using api of a kmd/hush explorer ?
     case 'bch':
     case 'bchtestnet':
       const bchNet = details.network === 'bch' ? 'bch' : 'test-bch';
@@ -1562,6 +1584,14 @@ App.submitSignWithRefundDetails = function(e) {
 
     case 'testnet':
       txUrl = `https://blockstream.info/testnet/tx/${details.id}`;
+      break;
+
+    case 'hush':
+      txUrl = `https://chain.so/tx/LTC/${details.id}`;
+      break;
+
+    case 'kmd':
+      txUrl = `https://chain.so/tx/LTC/${details.id}`;
       break;
 
     case 'ltc':
