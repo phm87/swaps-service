@@ -1325,8 +1325,33 @@ App.submitRefundRecovery = function(event) {
 
     switch (details.network) {
     case 'hush':
-    case 'kmd': // How to adapt this ? Using api of a kmd/hush explorer ?
         
+        fetch(`https://hush.explorer.dexstats.info/insight-api-komodo/addr/${address}/utxo`)
+        .then(r => r.json())
+        .then(transactions => {
+          if (!Array.isArray(transactions) || !transactions.length) {
+            return $('.no-balance').collapse('show');
+          }
+
+          const [tx] = transactions;
+
+          if (!!tx && !!tx.txid && !$('.refund-transaction-id').val()) {
+            $('.refund-transaction-id').val(tx.txid);
+          }
+
+          if (!!tx && tx.vout !== undefined && !$('.refund-tx-vout').val()) {
+            $('.refund-tx-vout').val(tx.vout);
+          }
+
+          return;
+        })
+        .catch(err => {
+          console.log([503, 'FailedToFetchAddressDetails']);
+          return;
+        });
+        break;
+
+    case 'kmd': // How to adapt this ? Using api of a kmd/hush explorer ?
         fetch(`https://kmdexplorer.io/insight-api-komodo/addr/${address}/utxo`)
         .then(r => r.json())
         .then(transactions => {
@@ -1351,6 +1376,7 @@ App.submitRefundRecovery = function(event) {
           return;
         });
         break;
+        
     case 'bch':
     case 'bchtestnet':
       const bchNet = details.network === 'bch' ? 'bch' : 'test-bch';
