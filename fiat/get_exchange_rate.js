@@ -56,6 +56,7 @@ module.exports = ({cache, network}, cbk) => {
       case 'testnet':
         return cbk(null, 'BTC');
 
+      case 'hush':
       case 'kmd':
       case 'ltc':
       case 'ltctestnet':
