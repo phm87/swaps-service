@@ -1638,11 +1638,11 @@ App.submitSignWithRefundDetails = function(e) {
       break;
 
     case 'hush':
-      txUrl = `https://chain.so/tx/LTC/${details.id}`;
+      txUrl = `https://hush.explorer.dexstats.info/tx/${details.id}`;
       break;
 
     case 'kmd':
-      txUrl = `https://chain.so/tx/LTC/${details.id}`;
+      txUrl = `https://kmd.explorer.dexstats.info/tx/${details.id}`;
       break;
 
     case 'ltc':
