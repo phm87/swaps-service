@@ -2,7 +2,7 @@
   "// Komodo": "",
 
   "fork_id": 42,
-  "ms_per_block": 150000,
+  "ms_per_block": 60000,
   "is_rbf_disabled": true,
   "is_segwit_absent": true,
   "prefix": {
